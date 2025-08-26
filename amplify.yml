@@ -1,0 +1,23 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Ensure correct Node version
+        - nvm install 20
+        - nvm use 20
+        # Clean install dependencies to avoid lockfile conflicts
+        - rm -rf node_modules package-lock.json
+        - npm install --legacy-peer-deps
+    build:
+      commands:
+        # Build the React app
+        - npm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .npm/**/*
+
