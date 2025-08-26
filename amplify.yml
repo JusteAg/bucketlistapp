@@ -14,7 +14,7 @@ frontend:
         # Build the React app
         - npm run build
   artifacts:
-    baseDirectory: build
+    baseDirectory: dist
     files:
       - '**/*'
   cache:
